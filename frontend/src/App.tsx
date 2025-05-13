@@ -107,8 +107,8 @@ function Repos() {
             <li className="repo-card" key={repo.id} onClick={() => setSelectedRepoId(repo.id)}>
               <button
                 className="delete-button"
-                onClick={() => {
-                  deleteRepo({ variables: { repoId: repo.id } });
+                onClick={async () => {
+                  await deleteRepo({ variables: { repoId: repo.id } });
                   refetch();
                 }}
               >
@@ -118,8 +118,8 @@ function Repos() {
                 <div>
                   <button
                     className="seen-button"
-                    onClick={() => {
-                      updateRepo({ variables: { repoId: repo.id, hasBeenSeen: true } });
+                    onClick={async () => {
+                      await updateRepo({ variables: { repoId: repo.id, hasBeenSeen: true } });
                       refetch();
                     }}
                   >
