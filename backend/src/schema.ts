@@ -17,5 +17,6 @@ export const typeDefs = gql`
 
   type Mutation {
     createRepo(owner: String!, name: String!): Repo!
+    deleteRepo(repoId: Int!): Repo!
   }
 `;

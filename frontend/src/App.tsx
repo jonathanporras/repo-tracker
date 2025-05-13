@@ -25,11 +25,20 @@ const CREATE_REPO = gql`
   }
 `;
 
+const DELETE_REPO = gql`
+  mutation ($repoId: Int!) {
+    deleteRepo(repoId: $repoId) {
+      id
+    }
+  }
+`;
+
 function Repos() {
   const [owner, setOwner] = useState("");
   const [name, setName] = useState("");
   const { data, loading, refetch } = useQuery(GET_REPOS);
   const [createRepo] = useMutation(CREATE_REPO);
+  const [deleteRepo] = useMutation(DELETE_REPO);
 
   if (loading) return <p>Loading...</p>;
 
@@ -51,6 +60,7 @@ function Repos() {
           />
         </p>
         <button
+          className="submit-button"
           onClick={async () => {
             try {
               await createRepo({ variables: { owner: owner, name: name } });
@@ -69,6 +79,15 @@ function Repos() {
       <ul className="repo-list">
         {data?.repos?.map((repo: any) => (
           <li className="repo-card" key={repo.id}>
+            <button
+              className="delete-button"
+              onClick={() => {
+                deleteRepo({ variables: { repoId: repo.id } });
+                refetch();
+              }}
+            >
+              Delete
+            </button>
             <p>
               {repo.owner}/{repo.name}
             </p>

@@ -28,5 +28,12 @@ export const resolvers = {
         });
       }
     },
+    deleteRepo: async (_: any, args: any, { prisma }: any) => {
+      return prisma.repo.delete({
+        where: {
+          id: args.repoId,
+        },
+      });
+    },
   },
 };
