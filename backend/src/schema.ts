@@ -8,6 +8,7 @@ export const typeDefs = gql`
     latestReleaseTag: String
     releaseDate: String
     description: String
+    hasBeenSeen: Boolean
     createdAt: String!
   }
 
@@ -18,5 +19,6 @@ export const typeDefs = gql`
   type Mutation {
     createRepo(owner: String!, name: String!): Repo!
     deleteRepo(repoId: Int!): Repo!
+    updateRepo(repoId: Int!, hasBeenSeen: Boolean!): Repo!
   }
 `;

@@ -11,6 +11,7 @@ const GET_REPOS = gql`
       latestReleaseTag
       description
       releaseDate
+      hasBeenSeen
     }
   }
 `;
@@ -21,6 +22,14 @@ const CREATE_REPO = gql`
       id
       owner
       name
+    }
+  }
+`;
+
+const UPDATE_REPO = gql`
+  mutation ($repoId: Int!, $hasBeenSeen: Boolean!) {
+    updateRepo(repoId: $repoId, hasBeenSeen: $hasBeenSeen) {
+      id
     }
   }
 `;
@@ -39,6 +48,7 @@ function Repos() {
   const { data, loading, refetch } = useQuery(GET_REPOS);
   const [createRepo] = useMutation(CREATE_REPO);
   const [deleteRepo] = useMutation(DELETE_REPO);
+  const [updateRepo] = useMutation(UPDATE_REPO);
 
   if (loading) return <p>Loading...</p>;
 
@@ -88,6 +98,19 @@ function Repos() {
             >
               Delete
             </button>
+            {!repo.hasBeenSeen && (
+              <div>
+                New!
+                <button
+                  onClick={() => {
+                    updateRepo({ variables: { repoId: repo.id, hasBeenSeen: true } });
+                    refetch();
+                  }}
+                >
+                  x
+                </button>
+              </div>
+            )}
             <p>
               {repo.owner}/{repo.name}
             </p>

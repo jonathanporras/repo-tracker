@@ -896,6 +896,7 @@ export namespace Prisma {
     description: string | null
     latestReleaseTag: string | null
     releaseDate: string | null
+    hasBeenSeen: boolean | null
     createdAt: Date | null
   }
 
@@ -906,6 +907,7 @@ export namespace Prisma {
     description: string | null
     latestReleaseTag: string | null
     releaseDate: string | null
+    hasBeenSeen: boolean | null
     createdAt: Date | null
   }
 
@@ -916,6 +918,7 @@ export namespace Prisma {
     description: number
     latestReleaseTag: number
     releaseDate: number
+    hasBeenSeen: number
     createdAt: number
     _all: number
   }
@@ -936,6 +939,7 @@ export namespace Prisma {
     description?: true
     latestReleaseTag?: true
     releaseDate?: true
+    hasBeenSeen?: true
     createdAt?: true
   }
 
@@ -946,6 +950,7 @@ export namespace Prisma {
     description?: true
     latestReleaseTag?: true
     releaseDate?: true
+    hasBeenSeen?: true
     createdAt?: true
   }
 
@@ -956,6 +961,7 @@ export namespace Prisma {
     description?: true
     latestReleaseTag?: true
     releaseDate?: true
+    hasBeenSeen?: true
     createdAt?: true
     _all?: true
   }
@@ -1053,6 +1059,7 @@ export namespace Prisma {
     description: string | null
     latestReleaseTag: string | null
     releaseDate: string | null
+    hasBeenSeen: boolean | null
     createdAt: Date
     _count: RepoCountAggregateOutputType | null
     _avg: RepoAvgAggregateOutputType | null
@@ -1082,6 +1089,7 @@ export namespace Prisma {
     description?: boolean
     latestReleaseTag?: boolean
     releaseDate?: boolean
+    hasBeenSeen?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["repo"]>
 
@@ -1092,6 +1100,7 @@ export namespace Prisma {
     description?: boolean
     latestReleaseTag?: boolean
     releaseDate?: boolean
+    hasBeenSeen?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["repo"]>
 
@@ -1102,6 +1111,7 @@ export namespace Prisma {
     description?: boolean
     latestReleaseTag?: boolean
     releaseDate?: boolean
+    hasBeenSeen?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["repo"]>
 
@@ -1112,10 +1122,11 @@ export namespace Prisma {
     description?: boolean
     latestReleaseTag?: boolean
     releaseDate?: boolean
+    hasBeenSeen?: boolean
     createdAt?: boolean
   }
 
-  export type RepoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "owner" | "name" | "description" | "latestReleaseTag" | "releaseDate" | "createdAt", ExtArgs["result"]["repo"]>
+  export type RepoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "owner" | "name" | "description" | "latestReleaseTag" | "releaseDate" | "hasBeenSeen" | "createdAt", ExtArgs["result"]["repo"]>
 
   export type $RepoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Repo"
@@ -1127,6 +1138,7 @@ export namespace Prisma {
       description: string | null
       latestReleaseTag: string | null
       releaseDate: string | null
+      hasBeenSeen: boolean | null
       createdAt: Date
     }, ExtArgs["result"]["repo"]>
     composites: {}
@@ -1557,6 +1569,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Repo", 'String'>
     readonly latestReleaseTag: FieldRef<"Repo", 'String'>
     readonly releaseDate: FieldRef<"Repo", 'String'>
+    readonly hasBeenSeen: FieldRef<"Repo", 'Boolean'>
     readonly createdAt: FieldRef<"Repo", 'DateTime'>
   }
     
@@ -1945,6 +1958,7 @@ export namespace Prisma {
     description: 'description',
     latestReleaseTag: 'latestReleaseTag',
     releaseDate: 'releaseDate',
+    hasBeenSeen: 'hasBeenSeen',
     createdAt: 'createdAt'
   };
 
@@ -2009,6 +2023,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -2049,6 +2070,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Repo"> | string | null
     latestReleaseTag?: StringNullableFilter<"Repo"> | string | null
     releaseDate?: StringNullableFilter<"Repo"> | string | null
+    hasBeenSeen?: BoolNullableFilter<"Repo"> | boolean | null
     createdAt?: DateTimeFilter<"Repo"> | Date | string
   }
 
@@ -2059,6 +2081,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     latestReleaseTag?: SortOrderInput | SortOrder
     releaseDate?: SortOrderInput | SortOrder
+    hasBeenSeen?: SortOrderInput | SortOrder
     createdAt?: SortOrder
   }
 
@@ -2072,6 +2095,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"Repo"> | string | null
     latestReleaseTag?: StringNullableFilter<"Repo"> | string | null
     releaseDate?: StringNullableFilter<"Repo"> | string | null
+    hasBeenSeen?: BoolNullableFilter<"Repo"> | boolean | null
     createdAt?: DateTimeFilter<"Repo"> | Date | string
   }, "id">
 
@@ -2082,6 +2106,7 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     latestReleaseTag?: SortOrderInput | SortOrder
     releaseDate?: SortOrderInput | SortOrder
+    hasBeenSeen?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: RepoCountOrderByAggregateInput
     _avg?: RepoAvgOrderByAggregateInput
@@ -2100,6 +2125,7 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"Repo"> | string | null
     latestReleaseTag?: StringNullableWithAggregatesFilter<"Repo"> | string | null
     releaseDate?: StringNullableWithAggregatesFilter<"Repo"> | string | null
+    hasBeenSeen?: BoolNullableWithAggregatesFilter<"Repo"> | boolean | null
     createdAt?: DateTimeWithAggregatesFilter<"Repo"> | Date | string
   }
 
@@ -2109,6 +2135,7 @@ export namespace Prisma {
     description?: string | null
     latestReleaseTag?: string | null
     releaseDate?: string | null
+    hasBeenSeen?: boolean | null
     createdAt?: Date | string
   }
 
@@ -2119,6 +2146,7 @@ export namespace Prisma {
     description?: string | null
     latestReleaseTag?: string | null
     releaseDate?: string | null
+    hasBeenSeen?: boolean | null
     createdAt?: Date | string
   }
 
@@ -2128,6 +2156,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     latestReleaseTag?: NullableStringFieldUpdateOperationsInput | string | null
     releaseDate?: NullableStringFieldUpdateOperationsInput | string | null
+    hasBeenSeen?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2138,6 +2167,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     latestReleaseTag?: NullableStringFieldUpdateOperationsInput | string | null
     releaseDate?: NullableStringFieldUpdateOperationsInput | string | null
+    hasBeenSeen?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2148,6 +2178,7 @@ export namespace Prisma {
     description?: string | null
     latestReleaseTag?: string | null
     releaseDate?: string | null
+    hasBeenSeen?: boolean | null
     createdAt?: Date | string
   }
 
@@ -2157,6 +2188,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     latestReleaseTag?: NullableStringFieldUpdateOperationsInput | string | null
     releaseDate?: NullableStringFieldUpdateOperationsInput | string | null
+    hasBeenSeen?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2167,6 +2199,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     latestReleaseTag?: NullableStringFieldUpdateOperationsInput | string | null
     releaseDate?: NullableStringFieldUpdateOperationsInput | string | null
+    hasBeenSeen?: NullableBoolFieldUpdateOperationsInput | boolean | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2211,6 +2244,11 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2234,6 +2272,7 @@ export namespace Prisma {
     description?: SortOrder
     latestReleaseTag?: SortOrder
     releaseDate?: SortOrder
+    hasBeenSeen?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -2248,6 +2287,7 @@ export namespace Prisma {
     description?: SortOrder
     latestReleaseTag?: SortOrder
     releaseDate?: SortOrder
+    hasBeenSeen?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -2258,6 +2298,7 @@ export namespace Prisma {
     description?: SortOrder
     latestReleaseTag?: SortOrder
     releaseDate?: SortOrder
+    hasBeenSeen?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -2317,6 +2358,14 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2337,6 +2386,10 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -2388,6 +2441,11 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -2471,6 +2529,14 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {

@@ -35,5 +35,15 @@ export const resolvers = {
         },
       });
     },
+    updateRepo: async (_: any, args: any, { prisma }: any) => {
+      return prisma.repo.update({
+        where: {
+          id: args.repoId,
+        },
+        data: {
+          hasBeenSeen: args.hasBeenSeen,
+        },
+      });
+    },
   },
 };
