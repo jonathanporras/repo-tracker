@@ -138,7 +138,7 @@ function Repos() {
         <div className="repo-description">
           <p>Description:</p>
           {selectedRepoId && (
-            <p>{data.repos.find((repo: any) => repo.id === selectedRepoId).description}</p>
+            <p>{data.repos.find((repo: any) => repo.id === selectedRepoId)?.description}</p>
           )}
         </div>
       </div>
