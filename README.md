@@ -8,14 +8,12 @@ I used Vite to create my React app, which was a new tool to me, but it seemed to
 
 3) `npx prisma generate`
 
-4) `npm run dev`
-
-5) Add an `.env` file to `backend/` with the following:
-
+4) Add an `.env` file to `backend/` with the following:
 ```
 DATABASE_URL="postgresql://<username>:<password>@localhost:5432/repo-track-db?schema=public"
 GITHUB_TOKEN="ghp_****"
 ```
+5) `npm run dev`
 
 ### Frontend Setup:
 1) `npm run dev`
