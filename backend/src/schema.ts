@@ -20,5 +20,6 @@ export const typeDefs = gql`
     createRepo(owner: String!, name: String!): Repo!
     deleteRepo(repoId: Int!): Repo!
     updateRepo(repoId: Int!, hasBeenSeen: Boolean!): Repo!
+    refreshRepos: Boolean!
   }
 `;

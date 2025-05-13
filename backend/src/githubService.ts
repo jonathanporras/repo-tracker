@@ -1,4 +1,3 @@
-// server/src/githubService.ts
 import { octokit } from "./githubClient";
 
 export async function getRepoDetails(owner: string, repo: string) {

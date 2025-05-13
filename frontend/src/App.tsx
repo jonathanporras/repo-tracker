@@ -42,6 +42,12 @@ const DELETE_REPO = gql`
   }
 `;
 
+const REFRESH_REPOS = gql`
+  mutation {
+    refreshRepos
+  }
+`;
+
 function Repos() {
   const [owner, setOwner] = useState("");
   const [name, setName] = useState("");
@@ -49,6 +55,7 @@ function Repos() {
   const [createRepo] = useMutation(CREATE_REPO);
   const [deleteRepo] = useMutation(DELETE_REPO);
   const [updateRepo] = useMutation(UPDATE_REPO);
+  const [refreshRepos] = useMutation(REFRESH_REPOS);
 
   if (loading) return <p>Loading...</p>;
 
@@ -83,6 +90,14 @@ function Repos() {
           }}
         >
           Add Repo
+        </button>
+        <button
+          onClick={async () => {
+            await refreshRepos();
+            refetch();
+          }}
+        >
+          Refresh All Repos
         </button>
       </div>
 

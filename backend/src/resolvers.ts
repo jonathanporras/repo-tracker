@@ -1,4 +1,5 @@
 import { getLatestRelease, getRepoDetails } from "./githubService";
+import { refreshRepos } from "./refreshRepos";
 
 export const resolvers = {
   Query: {
@@ -44,6 +45,9 @@ export const resolvers = {
           hasBeenSeen: args.hasBeenSeen,
         },
       });
+    },
+    refreshRepos: async (_: any, args: any, { prisma }: any) => {
+      return await refreshRepos();
     },
   },
 };
