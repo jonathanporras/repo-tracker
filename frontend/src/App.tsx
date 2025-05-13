@@ -51,7 +51,11 @@ function Repos() {
       </div>
       <button
         onClick={async () => {
-          await createRepo({ variables: { owner: owner, name: name } });
+          try {
+            await createRepo({ variables: { owner: owner, name: name } });
+          } catch (e) {
+            alert(e);
+          }
           setName("");
           setOwner("");
           refetch();

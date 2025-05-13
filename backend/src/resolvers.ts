@@ -8,19 +8,15 @@ export const resolvers = {
   },
   Mutation: {
     createRepo: async (_: any, args: any, { prisma }: any) => {
-      try {
-        const data = await getLatestRelease(args.owner, args.name);
-        if (data) {
-          return prisma.repo.create({
-            data: {
-              owner: args.owner,
-              name: args.name,
-              latestReleaseTag: data.tagName,
-            },
-          });
-        }
-      } catch (e) {
-        console.error(e);
+      const data = await getLatestRelease(args.owner, args.name);
+      if (data) {
+        return prisma.repo.create({
+          data: {
+            owner: args.owner,
+            name: args.name,
+            latestReleaseTag: data.tagName,
+          },
+        });
       }
     },
   },

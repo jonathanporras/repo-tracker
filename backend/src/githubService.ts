@@ -19,9 +19,6 @@ export async function getLatestRelease(owner: string, repo: string) {
       url: data.html_url,
     };
   } catch (err: any) {
-    if (err.status === 404) {
-      return null;
-    }
     throw err;
   }
 }
