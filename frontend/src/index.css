@@ -13,6 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  width: 100%;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -69,27 +73,75 @@ button:focus-visible {
 }
 
 .repo-tracker {
-  padding: 32px;
+  margin: 28px;
+}
+
+.repo-tracker button {
+  background-color: lightgreen;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+}
+
+.repo-tracker button:hover {
+  background-color: lightblue;
 }
 
 .form-section {
   display: flex;
-  gap: 6px;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+}
+
+.repo-list-wrapper {
+  display: flex;
+  flex-direction: row;
 }
 
 .repo-list {
   padding: 0;
+  width: 50%;
 }
 
 .repo-card {
   border: 1px solid grey;
   list-style-type: none;
   margin: 12px 0;
+  padding: 16px;
   position: relative;
+  cursor: pointer;
 }
 
 .delete-button {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 15px;
+  right: 15px;
+}
+
+.seen-button {
+  border: 1px solid green;
+}
+
+.repo-description {
+  border: 1px solid grey;
+  margin: 28px;
+  width: 50%;
+}
+
+.repo-description p {
+  padding: 0 16px;
+}
+
+@media (max-width: 1025px) {
+  .form-section {
+    flex-direction: column;
+  }
+  .repo-list-wrapper{
+    flex-direction: column;
+  }
+  .repo-list, .repo-description {
+    width: 100%;
+    margin: 0;
+  }
 }

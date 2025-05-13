@@ -51,6 +51,7 @@ const REFRESH_REPOS = gql`
 function Repos() {
   const [owner, setOwner] = useState("");
   const [name, setName] = useState("");
+  const [selectedRepoId, setSelectedRepoId] = useState(null);
   const { data, loading, refetch } = useQuery(GET_REPOS);
   const [createRepo] = useMutation(CREATE_REPO);
   const [deleteRepo] = useMutation(DELETE_REPO);
@@ -100,41 +101,47 @@ function Repos() {
           Refresh All Repos
         </button>
       </div>
-
-      <ul className="repo-list">
-        {data?.repos?.map((repo: any) => (
-          <li className="repo-card" key={repo.id}>
-            <button
-              className="delete-button"
-              onClick={() => {
-                deleteRepo({ variables: { repoId: repo.id } });
-                refetch();
-              }}
-            >
-              Delete
-            </button>
-            {!repo.hasBeenSeen && (
-              <div>
-                New!
-                <button
-                  onClick={() => {
-                    updateRepo({ variables: { repoId: repo.id, hasBeenSeen: true } });
-                    refetch();
-                  }}
-                >
-                  x
-                </button>
-              </div>
-            )}
-            <p>
-              {repo.owner}/{repo.name}
-            </p>
-            <p>Latest Release: {repo?.latestReleaseTag}</p>
-            <p>Description: {repo?.description}</p>
-            <p>Release Date: {repo?.releaseDate}</p>
-          </li>
-        ))}
-      </ul>
+      <div className="repo-list-wrapper">
+        <ul className="repo-list">
+          {data?.repos?.map((repo: any) => (
+            <li className="repo-card" key={repo.id} onClick={() => setSelectedRepoId(repo.id)}>
+              <button
+                className="delete-button"
+                onClick={() => {
+                  deleteRepo({ variables: { repoId: repo.id } });
+                  refetch();
+                }}
+              >
+                Delete
+              </button>
+              {!repo.hasBeenSeen && (
+                <div>
+                  <button
+                    className="seen-button"
+                    onClick={() => {
+                      updateRepo({ variables: { repoId: repo.id, hasBeenSeen: true } });
+                      refetch();
+                    }}
+                  >
+                    Mark as Seen
+                  </button>
+                </div>
+              )}
+              <p>
+                Name: {repo.owner}/{repo.name}
+              </p>
+              <p>Latest Release: {repo?.latestReleaseTag}</p>
+              <p>Release Date: {repo?.releaseDate}</p>
+            </li>
+          ))}
+        </ul>
+        <div className="repo-description">
+          <p>Description:</p>
+          {selectedRepoId && (
+            <p>{data.repos.find((repo: any) => repo.id === selectedRepoId).description}</p>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
