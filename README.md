@@ -10,7 +10,7 @@ I used Vite to create my React app, which was a new tool to me, but it seemed to
 
 4) `npm run dev`
 
-5) Add `.env` file with the following:
+5) Add an `.env` file to `backend/` with the following:
 
 ```
 DATABASE_URL="postgresql://<username>:<password>@localhost:5432/repo-track-db?schema=public"
