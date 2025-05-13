@@ -25,5 +25,6 @@ GITHUB_TOKEN="ghp_****"
 2) Improve type setting on the frontend
 3) Create Authentication to personalize tracked repos for specific users
 4) Implement Material UI components
+5) Add a Cron Job to check for new releases
 
 # Thank you! 🚀
