@@ -9,6 +9,8 @@ const GET_REPOS = gql`
       owner
       name
       latestReleaseTag
+      description
+      releaseDate
     }
   }
 `;
@@ -32,8 +34,8 @@ function Repos() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
-      <div>
+    <div className="repo-tracker">
+      <div className="form-section">
         <p>
           github.com/
           <input
@@ -48,26 +50,31 @@ function Repos() {
             onChange={(event) => setName(event?.target.value)}
           />
         </p>
+        <button
+          onClick={async () => {
+            try {
+              await createRepo({ variables: { owner: owner, name: name } });
+            } catch (e) {
+              alert(e);
+            }
+            setName("");
+            setOwner("");
+            refetch();
+          }}
+        >
+          Add Repo
+        </button>
       </div>
-      <button
-        onClick={async () => {
-          try {
-            await createRepo({ variables: { owner: owner, name: name } });
-          } catch (e) {
-            alert(e);
-          }
-          setName("");
-          setOwner("");
-          refetch();
-        }}
-      >
-        Add Repo
-      </button>
-      <ul>
+
+      <ul className="repo-list">
         {data?.repos?.map((repo: any) => (
-          <li key={repo.id}>
-            {repo.owner}/{repo.name}
-            <p>Latest Release: {repo.latestReleaseTag}</p>
+          <li className="repo-card" key={repo.id}>
+            <p>
+              {repo.owner}/{repo.name}
+            </p>
+            <p>Latest Release: {repo?.latestReleaseTag}</p>
+            <p>Description: {repo?.description}</p>
+            <p>Release Date: {repo?.releaseDate}</p>
           </li>
         ))}
       </ul>

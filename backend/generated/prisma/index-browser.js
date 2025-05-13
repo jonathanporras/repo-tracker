@@ -124,7 +124,9 @@ exports.Prisma.RepoScalarFieldEnum = {
   id: 'id',
   owner: 'owner',
   name: 'name',
+  description: 'description',
   latestReleaseTag: 'latestReleaseTag',
+  releaseDate: 'releaseDate',
   createdAt: 'createdAt'
 };
 

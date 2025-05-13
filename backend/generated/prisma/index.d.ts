@@ -893,7 +893,9 @@ export namespace Prisma {
     id: number | null
     owner: string | null
     name: string | null
+    description: string | null
     latestReleaseTag: string | null
+    releaseDate: string | null
     createdAt: Date | null
   }
 
@@ -901,7 +903,9 @@ export namespace Prisma {
     id: number | null
     owner: string | null
     name: string | null
+    description: string | null
     latestReleaseTag: string | null
+    releaseDate: string | null
     createdAt: Date | null
   }
 
@@ -909,7 +913,9 @@ export namespace Prisma {
     id: number
     owner: number
     name: number
+    description: number
     latestReleaseTag: number
+    releaseDate: number
     createdAt: number
     _all: number
   }
@@ -927,7 +933,9 @@ export namespace Prisma {
     id?: true
     owner?: true
     name?: true
+    description?: true
     latestReleaseTag?: true
+    releaseDate?: true
     createdAt?: true
   }
 
@@ -935,7 +943,9 @@ export namespace Prisma {
     id?: true
     owner?: true
     name?: true
+    description?: true
     latestReleaseTag?: true
+    releaseDate?: true
     createdAt?: true
   }
 
@@ -943,7 +953,9 @@ export namespace Prisma {
     id?: true
     owner?: true
     name?: true
+    description?: true
     latestReleaseTag?: true
+    releaseDate?: true
     createdAt?: true
     _all?: true
   }
@@ -1038,7 +1050,9 @@ export namespace Prisma {
     id: number
     owner: string
     name: string
+    description: string | null
     latestReleaseTag: string | null
+    releaseDate: string | null
     createdAt: Date
     _count: RepoCountAggregateOutputType | null
     _avg: RepoAvgAggregateOutputType | null
@@ -1065,7 +1079,9 @@ export namespace Prisma {
     id?: boolean
     owner?: boolean
     name?: boolean
+    description?: boolean
     latestReleaseTag?: boolean
+    releaseDate?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["repo"]>
 
@@ -1073,7 +1089,9 @@ export namespace Prisma {
     id?: boolean
     owner?: boolean
     name?: boolean
+    description?: boolean
     latestReleaseTag?: boolean
+    releaseDate?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["repo"]>
 
@@ -1081,7 +1099,9 @@ export namespace Prisma {
     id?: boolean
     owner?: boolean
     name?: boolean
+    description?: boolean
     latestReleaseTag?: boolean
+    releaseDate?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["repo"]>
 
@@ -1089,11 +1109,13 @@ export namespace Prisma {
     id?: boolean
     owner?: boolean
     name?: boolean
+    description?: boolean
     latestReleaseTag?: boolean
+    releaseDate?: boolean
     createdAt?: boolean
   }
 
-  export type RepoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "owner" | "name" | "latestReleaseTag" | "createdAt", ExtArgs["result"]["repo"]>
+  export type RepoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "owner" | "name" | "description" | "latestReleaseTag" | "releaseDate" | "createdAt", ExtArgs["result"]["repo"]>
 
   export type $RepoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Repo"
@@ -1102,7 +1124,9 @@ export namespace Prisma {
       id: number
       owner: string
       name: string
+      description: string | null
       latestReleaseTag: string | null
+      releaseDate: string | null
       createdAt: Date
     }, ExtArgs["result"]["repo"]>
     composites: {}
@@ -1530,7 +1554,9 @@ export namespace Prisma {
     readonly id: FieldRef<"Repo", 'Int'>
     readonly owner: FieldRef<"Repo", 'String'>
     readonly name: FieldRef<"Repo", 'String'>
+    readonly description: FieldRef<"Repo", 'String'>
     readonly latestReleaseTag: FieldRef<"Repo", 'String'>
+    readonly releaseDate: FieldRef<"Repo", 'String'>
     readonly createdAt: FieldRef<"Repo", 'DateTime'>
   }
     
@@ -1916,7 +1942,9 @@ export namespace Prisma {
     id: 'id',
     owner: 'owner',
     name: 'name',
+    description: 'description',
     latestReleaseTag: 'latestReleaseTag',
+    releaseDate: 'releaseDate',
     createdAt: 'createdAt'
   };
 
@@ -2018,7 +2046,9 @@ export namespace Prisma {
     id?: IntFilter<"Repo"> | number
     owner?: StringFilter<"Repo"> | string
     name?: StringFilter<"Repo"> | string
+    description?: StringNullableFilter<"Repo"> | string | null
     latestReleaseTag?: StringNullableFilter<"Repo"> | string | null
+    releaseDate?: StringNullableFilter<"Repo"> | string | null
     createdAt?: DateTimeFilter<"Repo"> | Date | string
   }
 
@@ -2026,7 +2056,9 @@ export namespace Prisma {
     id?: SortOrder
     owner?: SortOrder
     name?: SortOrder
+    description?: SortOrderInput | SortOrder
     latestReleaseTag?: SortOrderInput | SortOrder
+    releaseDate?: SortOrderInput | SortOrder
     createdAt?: SortOrder
   }
 
@@ -2037,7 +2069,9 @@ export namespace Prisma {
     NOT?: RepoWhereInput | RepoWhereInput[]
     owner?: StringFilter<"Repo"> | string
     name?: StringFilter<"Repo"> | string
+    description?: StringNullableFilter<"Repo"> | string | null
     latestReleaseTag?: StringNullableFilter<"Repo"> | string | null
+    releaseDate?: StringNullableFilter<"Repo"> | string | null
     createdAt?: DateTimeFilter<"Repo"> | Date | string
   }, "id">
 
@@ -2045,7 +2079,9 @@ export namespace Prisma {
     id?: SortOrder
     owner?: SortOrder
     name?: SortOrder
+    description?: SortOrderInput | SortOrder
     latestReleaseTag?: SortOrderInput | SortOrder
+    releaseDate?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: RepoCountOrderByAggregateInput
     _avg?: RepoAvgOrderByAggregateInput
@@ -2061,14 +2097,18 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Repo"> | number
     owner?: StringWithAggregatesFilter<"Repo"> | string
     name?: StringWithAggregatesFilter<"Repo"> | string
+    description?: StringNullableWithAggregatesFilter<"Repo"> | string | null
     latestReleaseTag?: StringNullableWithAggregatesFilter<"Repo"> | string | null
+    releaseDate?: StringNullableWithAggregatesFilter<"Repo"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Repo"> | Date | string
   }
 
   export type RepoCreateInput = {
     owner: string
     name: string
+    description?: string | null
     latestReleaseTag?: string | null
+    releaseDate?: string | null
     createdAt?: Date | string
   }
 
@@ -2076,14 +2116,18 @@ export namespace Prisma {
     id?: number
     owner: string
     name: string
+    description?: string | null
     latestReleaseTag?: string | null
+    releaseDate?: string | null
     createdAt?: Date | string
   }
 
   export type RepoUpdateInput = {
     owner?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     latestReleaseTag?: NullableStringFieldUpdateOperationsInput | string | null
+    releaseDate?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2091,7 +2135,9 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     owner?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     latestReleaseTag?: NullableStringFieldUpdateOperationsInput | string | null
+    releaseDate?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2099,14 +2145,18 @@ export namespace Prisma {
     id?: number
     owner: string
     name: string
+    description?: string | null
     latestReleaseTag?: string | null
+    releaseDate?: string | null
     createdAt?: Date | string
   }
 
   export type RepoUpdateManyMutationInput = {
     owner?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     latestReleaseTag?: NullableStringFieldUpdateOperationsInput | string | null
+    releaseDate?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2114,7 +2164,9 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     owner?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     latestReleaseTag?: NullableStringFieldUpdateOperationsInput | string | null
+    releaseDate?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2179,7 +2231,9 @@ export namespace Prisma {
     id?: SortOrder
     owner?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     latestReleaseTag?: SortOrder
+    releaseDate?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -2191,7 +2245,9 @@ export namespace Prisma {
     id?: SortOrder
     owner?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     latestReleaseTag?: SortOrder
+    releaseDate?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -2199,7 +2255,9 @@ export namespace Prisma {
     id?: SortOrder
     owner?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     latestReleaseTag?: SortOrder
+    releaseDate?: SortOrder
     createdAt?: SortOrder
   }
 

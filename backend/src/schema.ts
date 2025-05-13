@@ -6,6 +6,8 @@ export const typeDefs = gql`
     owner: String!
     name: String!
     latestReleaseTag: String
+    releaseDate: String
+    description: String
     createdAt: String!
   }
 

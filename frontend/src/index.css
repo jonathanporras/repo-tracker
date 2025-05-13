@@ -48,6 +48,7 @@ button {
 }
 button:hover {
   border-color: #646cff;
+  cursor: pointer;
 }
 button:focus,
 button:focus-visible {
@@ -65,4 +66,23 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.repo-tracker {
+  padding: 32px;
+}
+
+.form-section {
+  display: flex;
+  gap: 6px;
+}
+
+.repo-list {
+  padding: 0;
+}
+
+.repo-card {
+  border: 1px solid grey;
+  list-style-type: none;
+  margin: 12px 0;
 }

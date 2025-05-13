@@ -1,20 +1,29 @@
-import { getLatestRelease } from "./githubService";
+import { getLatestRelease, getRepoDetails } from "./githubService";
 
 export const resolvers = {
   Query: {
     repos: async (_: any, __: any, { prisma }: any) => {
-      return prisma.repo.findMany();
+      return prisma.repo.findMany({
+        orderBy: [
+          {
+            createdAt: "desc",
+          },
+        ],
+      });
     },
   },
   Mutation: {
     createRepo: async (_: any, args: any, { prisma }: any) => {
-      const data = await getLatestRelease(args.owner, args.name);
-      if (data) {
+      const repoData = await getRepoDetails(args.owner, args.name);
+      const releaseData = await getLatestRelease(args.owner, args.name);
+      if (releaseData && repoData) {
         return prisma.repo.create({
           data: {
             owner: args.owner,
             name: args.name,
-            latestReleaseTag: data.tagName,
+            description: repoData.description,
+            latestReleaseTag: releaseData.tagName,
+            releaseDate: releaseData.publishedAt,
           },
         });
       }
