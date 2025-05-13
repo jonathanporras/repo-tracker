@@ -14,6 +14,8 @@ export async function refreshRepos() {
   });
   for (const repo of repos) {
     const latestReleaseData = await getLatestRelease(repo.owner, repo.name);
+
+    // Update release tag if it's been changed
     if (repo.latestReleaseTag !== latestReleaseData.tagName) {
       await prisma.repo.update({
         where: {
@@ -27,15 +29,17 @@ export async function refreshRepos() {
       });
       updates = true;
     } else {
-      await prisma.repo.update({
-        where: {
-          id: repo.id,
-        },
-        data: {
-          hasBeenSeen: false,
-        },
-      });
-      updates = true;
+      if (repo.hasBeenSeen === true) {
+        await prisma.repo.update({
+          where: {
+            id: repo.id,
+          },
+          data: {
+            hasBeenSeen: false,
+          },
+        });
+        updates = true;
+      }
     }
   }
   return updates;

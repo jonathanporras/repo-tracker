@@ -94,8 +94,12 @@ function Repos() {
         </button>
         <button
           onClick={async () => {
-            await refreshRepos();
-            refetch();
+            try {
+              await refreshRepos();
+              refetch();
+            } catch (e) {
+              alert(e);
+            }
           }}
         >
           Refresh All Repos
@@ -108,8 +112,12 @@ function Repos() {
               <button
                 className="delete-button"
                 onClick={async () => {
-                  await deleteRepo({ variables: { repoId: repo.id } });
-                  refetch();
+                  try {
+                    await deleteRepo({ variables: { repoId: repo.id } });
+                    refetch();
+                  } catch (e) {
+                    alert(e);
+                  }
                 }}
               >
                 Delete
@@ -119,8 +127,14 @@ function Repos() {
                   <button
                     className="seen-button"
                     onClick={async () => {
-                      await updateRepo({ variables: { repoId: repo.id, hasBeenSeen: true } });
-                      refetch();
+                      try {
+                        await updateRepo({
+                          variables: { repoId: repo.id, hasBeenSeen: true },
+                        });
+                        refetch();
+                      } catch (e) {
+                        alert(e);
+                      }
                     }}
                   >
                     Mark as Seen
